@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="tr-TR"><!-- language & region -->
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"><!-- MIME type -->
+    <script type="text/javascript" language="JavaScript" src="JSv2.js"></script><!-- call .js file -->
+    <style>
+        body{
+            background-color: floralwhite;
+        }
+        *{
+            border-radius: 7px;
+        }
+        #clock{
+            background-color: orangered;
+            border-radius: 1x;
+            padding: 7px;
+            color: black;
+        }
+    </style>
+</head>
+<body>
+    <center>
+        <br />
+        <img id="abstract" src="background.jpg" onmouseover="zoomIn()" onmouseout="zoomOut()" tabindex="1"><br /><br />
+        <img id="gitpng" src="git.png" onmouseover="createBorderGit()" onmouseout="cleanBorderGit()" tabindex="2"
+             title="browse profile" onclick="gitLink()"><br /><br />
+
+        <div onmouseover="paint0()" onmouseout="clean0()"><marquee behavior="alternate" scrollamount="7">name : Dogukan Berk Ozer</marquee></div>
+        <div onmouseover="paint1()" onmouseout="clean1()"><marquee behavior="alternate" scrollamount="8">mail : doguberko@gmail.com</marquee></div>
+        <div onmouseover="paint2()" onmouseout="clean2()"><marquee behavior="alternate" scrollamount="9">phone : +90 (534) 973 71 </marquee></div><br />
+
+        <img id="twit" src="twit.png" onclick="twitLink()" onmouseover="zoomInTwit()" onmouseout="zoomOutTwit()" title="browse on Twitter">
+        <img id="insta" src="insta.png" onclick="instaLink()" onmouseover="zoomInInsta()" onmouseout="zoomOutInsta()"><br /><br />
+        <video loop autoplay muted controls width="384" height="216px">
+            <source src="Pexels%20Videos%202699.mp4" type="video/mp4">
+        </video><br /><br /><br />
+        <span id="clock"></span>
+        <pre>
+            <script type="text/javascript" language="JavaScript">
+                var count = 1, t1 = "#1 DOGUKAN", t2 = "#2 BERK", t3 = "#0 OZER";
+
+                function updateTime(){
+                    var time = new Date(), hour = time.getHours(), min = time.getMinutes(), sec = time.getSeconds(), milisec = time.getMilliseconds();
+                    document.getElementById("clock").innerHTML = (setMonth(time.getMonth()) + " " + time.getDate() + "."
+                        + time.getFullYear() + " # ").small() + (fixTime(hour) + " : " + fixTime(min) + " : " + fixTime(sec) + " : "
+                        + fixTime(milisec)).bold() + " # (GMT +03:00)".small().small().small();
+                }
+                setInterval(updateTime, 1);
+
+                function setMonth(value){
+                    if (value == 0) return "January";
+                    else if (value == 1) return "February";
+                    else if (value == 2) return "March";
+                    else if (value == 3) return "April";
+                    else if (value == 4) return "May";
+                    else if (value == 5) return "June";
+                    else if (value == 6) return "July";
+                    else if (value == 7) return "August";
+                    else if (value == 8) return "September";
+                    else if (value == 9) return "October";
+                    else if (value == 10) return "November";
+                    else return "December";
+                }
+
+                function fixTime(value){
+                    str = value.toString();
+                    if (str.length == 1){
+                        return "0" + str;
+                    }else {
+                        return str;
+                    }
+                }
+
+                function changeTitle(){
+                    if (count == 1){
+                        window.status = t1;
+                        document.title = t1;
+                        count++;
+                    }else if (count == 2){
+                        window.status = t2;
+                        document.title = t2;
+                        count++;
+                    }else{
+                        window.status = t3;
+                        document.title = t3;
+                        count = 1;
+                    }
+                    window.setTimeout("changeTitle();", 666);
+                }
+                changeTitle();
+
+                document.images[0].width = 603, document.images[0].height = 195, document.images[0].style.border = "7px solid black";
+                document.images[1].width = 185, document.images[1].height = 68, document.images[1].style.border = "2px dashed yellow";
+                document.images[2].width = 55, document.images[2].height = 55;
+                document.images[3].width = 55, document.images[2].height = 55;
+
+                function zoomIn(){
+                    document.getElementById("abstract").style.width = "804px";
+                    document.getElementById("abstract").style.height = "260px";
+                    document.getElementById("abstract").style.border = "3px dashed black";
+                }
+                function zoomOut(){
+                    document.getElementById("abstract").style.width = "603px";
+                    document.getElementById("abstract").style.height = "195px";
+                    document.getElementById("abstract").style.backgroundColor = "floralwhite";
+                    document.getElementById("abstract").style.border = "7px solid black";
+                }
+
+                function zoomInTwit(){
+                    document.getElementById("twit").style.width = "77px", document.getElementById("twit").style.height = "77px";
+                }
+                function zoomOutTwit(){
+                    document.getElementById("twit").style.width = "55px", document.getElementById("twit").style.height = "55px";
+                }
+
+                function zoomInInsta(){
+                    document.getElementById("insta").style.width = "77px", document.getElementById("insta").style.height = "77px";
+                }
+                function zoomOutInsta(){
+                    document.getElementById("insta").style.width = "55px", document.getElementById("insta").style.height = "55px";
+                }
+
+                function createBorderGit(){
+                    document.getElementById("gitpng").style.border = "2px dashed orangered";
+                }
+                function cleanBorderGit(){
+                    document.getElementById("gitpng").style.border = "2px dashed yellow";
+                }
+
+                function gitLink(){
+                    window.open("https://github.com/doguberko", "_blank");
+                }
+                function twitLink(){
+                    window.open("https://twitter.com/doguberko", "_blank");
+                }
+                function instaLink(){
+                    window.open("https://www.instagram.com/doguberko", "_blank");
+                }
+
+                document.write("\n\nappVersion >> ".bold().fontcolor("red") + navigator.appVersion + "\n\n");
+
+                for (var i=0; i<navigator.plugins.length; i++){
+                    document.writeln(("Plugin " + (i+1) + ": ").bold().fontcolor("#1e90ff") + navigator.plugins[i].name + " # " + navigator.plugins[i].description
+                        + " # "+ navigator.plugins[i].filename);
+                }
+
+                function paint0(){
+                   document.getElementsByTagName("div")[0].style.backgroundColor = "yellow";
+                   document.getElementsByTagName("div")[0].style.fontSize = "18px";
+                }
+                function paint1(){
+                    document.getElementsByTagName("div")[1].style.backgroundColor = "yellow";
+                    document.getElementsByTagName("div")[1].style.fontSize = "18px";
+                }
+                function paint2(){
+                    document.getElementsByTagName("div")[2].style.backgroundColor = "yellow";
+                    document.getElementsByTagName("div")[2].style.fontSize = "18px";
+                }
+                function clean0(){
+                    document.getElementsByTagName("div")[0].style.backgroundColor = "floralwhite";
+                    document.getElementsByTagName("div")[0].style.fontSize = "15px";
+                }
+                function clean1(){
+                    document.getElementsByTagName("div")[1].style.backgroundColor = "floralwhite";
+                    document.getElementsByTagName("div" )[1].style.fontSize = "15px";
+                }
+                function clean2(){
+                    document.getElementsByTagName("div")[2].style.backgroundColor = "floralwhite";
+                    document.getElementsByTagName("div" )[2].style.fontSize = "15px";
+                }
+            </script>
+        </pre>
+    </center>
+</body>
+</html>
